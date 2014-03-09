@@ -1,0 +1,8 @@
+Weight
+  Units= imperial? ? 'LB' : 'KG'
+  Value= [((imperial? ? package.lbs : package.kgs).to_f.round(3), 0.1].max
+Dimensions
+  Length= (imperial ? package.inches(:length) : package.cm(:length)).to_f.round(3)
+  Width= (imperial ? package.inches(:width) : package.cm(:width)).to_f.round(3)
+  Height= (imperial ? package.inches(:height) : package.cm(:height)).to_f.round(3)
+  Units= imperial? ? 'IN' : 'CM'
