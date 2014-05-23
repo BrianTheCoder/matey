@@ -1,6 +1,6 @@
 # Matey
 
-TODO: Write a gem description
+Provides a common abstraction to working with shipping apis
 
 ## Installation
 
