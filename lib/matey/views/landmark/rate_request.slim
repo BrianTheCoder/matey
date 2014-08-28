@@ -1,0 +1,45 @@
+RateRequest(xmlns="http://fedex.com/ws/rate/v13")
+  == partial "header"
+  Version
+    ServiceId crs
+    Major 13
+    Intermediate 0
+    Minor 0
+  ReturnTransitAndCommit true
+  Version SATURDAY_DELIVERY
+  RequestedShipment
+    ShipTimestamp= ship_timestamp(options[:turn_around_time]))
+    - if has_freight?(options)
+      DropoffType= options[:dropoff_type] || 'REGULAR_PICKUP'
+      PackagingType= options[:packaging_type] || 'YOUR_PACKAGING'
+    Shipper= options[:shipper] || origin
+    Recipient= destination
+    - if options[:shipper] && options[:shipper] != origin
+      Origin= origin
+    - if has_freight?(options)
+      - freight_options = options[:freight]
+      ShippingChargesPayment
+        PaymentType= freight_options[:payment_type]
+        Payor
+          ResponsibleParty
+            AccountNumber= freight_options[:account]
+      FreightShipmentDetail
+        FedExFreightAccountNumber= freight_options[:account]
+        FedExFreightBillingContactAndAddress= freight_options[:billing_location]
+        Role= freight_options[:role]
+        - packages.each do |package|
+          LineItems
+            FreightClass= freight_options[:freight_class]
+            Packaging= freight_options[:packaging]
+            == partial "package", package: package
+      RateRequestTypes= type || 'ACCOUNT'
+    - else
+      SmartPostDetail
+        Indicia= options[:smart_post_indicia] || 'PARCEL_SELECT'
+        HubId= options[:smart_post_hub_id] || 5902 # default to LA
+      RateRequestTypes= type || 'ACCOUNT'
+      PackageCount=  packages.size
+      - packages.each do |package|
+        RequestedPackageLineItems
+          GroupPackageCount 1
+          == partial "package", package: package

@@ -5,7 +5,7 @@ AddressValidationRequest(xmlns="http://fedex.com/ws/addressvalidation/v2")
     Major 2
     Intermediate 0
     Minor 0
-  RequestTimestamp= Time.now.to_json
+  RequestTimestamp= Time.now.iso8601
   Options
     CheckResidentialStatus= options[:check_residential_status] ? 1 : 0
     MaximumNumberOfMatches= options[:maximum_number_of_matches]
