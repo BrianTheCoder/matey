@@ -24,33 +24,31 @@ module Matey
 
     def rates(origin, destination, packages, options = {})
       self.last_request = RateRequest.new(origin, destination, packages)
-      return last_request.errors unless last_request.valid?
-      self.last_response = client.post(last_request.render(options))
-      RateResponse.new(self.last_response)
+      send_request(nil, RateResponse)
     end
 
     def tracking_info(tracking_number, options={})
       self.last_request = TrackingInfoRequest.new(tracking_number)
-      return last_request.errors unless last_request.valid?
-      self.last_response = client.post(last_request.render(options))
-      TrackingInfoResponse.new(self.last_response)
+      send_request(nil, TrackingInfoResponse)
     end
 
     def create_shipment(origin, destination, package, options = {})
       self.last_request = ShipmentRequest.new(origin, destination, package)
-      return last_request.errors unless last_request.valid?
-      self.last_response = client.post(last_request.render(options))
-      ShipmentResponse.new(self.last_response)
+      send_request(nil, ShipmentResponse)
     end
 
     def validate_address(location, options = {})
       self.last_request = AddressValidationRequest.new(location)
-      return last_request.errors unless last_request.valid?
-      self.last_response = client.post(last_request.render(options))
-      ShipmentResponse.new(self.last_response)
+      send_request(nil, AddressValidationResponse)
     end
 
     protected
+
+    def send_request(url, response_class)
+      return last_request.errors unless last_request.valid?
+      self.last_response = client.post(url, last_request.render(options))
+      response_class.new(self.last_response)
+    end
 
     def client
       @_client ||= Faraday.new (@test ? TEST_URL : LIVE_URL) do |conn|
