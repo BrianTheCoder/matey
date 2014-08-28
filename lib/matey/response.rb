@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module Matey
   class Response
     attr_accessor :response
@@ -7,7 +9,7 @@ module Matey
     end
 
     def doc
-      @_doc ||= Nokogiri::XML(response.body)
+      @_doc ||= ::Nokogiri::XML(response.body)
     end
   end
 end
