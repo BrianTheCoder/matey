@@ -1,6 +1,4 @@
 module Matey
-  module Responses
-    class TrackingInfoResponse < Matey::Response
-    end
+  class TrackingInfoResponse < Matey::Response
   end
 end

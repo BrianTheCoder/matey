@@ -1,6 +1,4 @@
 module Matey
-  module Responses
-    class ShipmentResponse < Matey::Response
-    end
+  class ShipmentResponse < Matey::Response
   end
 end

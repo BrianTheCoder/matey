@@ -1,6 +1,4 @@
 module Matey
-  module Responses
-    class RateResponse < Matey::Response
-    end
+  class RateResponse < Matey::Response
   end
 end

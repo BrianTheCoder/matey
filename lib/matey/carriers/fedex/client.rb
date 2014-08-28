@@ -15,6 +15,9 @@ require 'matey/fedex/tracking_info_response'
 module Matey
   module Fedex
     class Client < Matey::Client
+      TEST_URL = 'https://gatewaybeta.fedex.com/xml'.freeze
+      LIVE_URL = 'https://gateway.fedex.com/xml'.freeze
+
       attr_accessor :key, :meter, :password, :account
 
       validates :key, presence: true
