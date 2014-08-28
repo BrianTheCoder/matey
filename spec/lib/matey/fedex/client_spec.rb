@@ -8,4 +8,7 @@ describe Matey::Fedex::Client do
   it 'validates the client' do
     client.should be_valid
   end
+
+  context '#validate_address' do
+  end
 end

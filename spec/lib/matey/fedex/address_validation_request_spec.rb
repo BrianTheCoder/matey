@@ -1,6 +1,5 @@
 require "spec_helper"
 require "matey/fedex/client"
-require "pry"
 require "yaml"
 
 describe Matey::Fedex::AddressValidationRequest do
