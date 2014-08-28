@@ -2,6 +2,13 @@
 
 Provides a common abstraction to working with shipping apis
 
+Supported
+* FedEx - address validation, rates, tracking, create shipment
+* USPS (soon) - address validation, rates, tracking
+* UPS (soon) - rates, tracking
+* Landmark (soon) - rates, tracking, create shipment
+* DHL (soon) - rates, tracking
+
 ## Installation
 
 Add this line to your application's Gemfile:
