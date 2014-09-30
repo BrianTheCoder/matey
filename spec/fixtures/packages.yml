@@ -1,0 +1,84 @@
+just_ounces:
+  weight: 16
+  imperial: true
+just_grams:
+  weight: 1000
+  imperial: false
+just_zero_grams:
+  weight: 0
+  imperial: false
+all_imperial:
+  weight: 16
+  height: 1
+  width: 8
+  length: 12
+all_metric:
+  weight: 1000
+  height: 2
+  width: 20
+  length: 40
+  imperial: false
+book:
+  weight: 250
+  height: 14
+  width: 19
+  length: 2
+  imperial: false
+wii:
+  weight: (7.5 * 16)
+  height: 15
+  width: 10
+  length: 45
+  value: 269.99
+  currency: GBP
+american_wii:
+  weight: (7.5 * 16)
+  height: 15
+  width: 10
+  length: 45
+  value: 269.99
+  currency: USD
+new_zealand_wii:
+  weight: (7.5 * 16)
+  height: 15
+  width: 10
+  length: 45
+  value: 269.99
+  currency: NZD
+worthless_wii:
+  weight: (7.5 * 16)
+  height: 15
+  width: 10
+  length: 45
+  value: 0.0
+small_half_pound:
+  weight: 8
+  height: 1
+  width: 1
+  length: 1
+big_half_pound:
+  weight: 8
+  height: 24
+  width: 24
+  length: 36
+chocolate_stuff:
+  width: 80
+  height: 2
+  width: 6
+  length: 12
+declared_value:
+  weight: 80
+  height: 2
+  width: 6
+  length: 12
+  value: 999.99
+diapers:
+  weight: 10198
+  height: 10
+  width: 10
+  length: 10
+essentials:
+  weight: 36
+  height: 10
+  width: 10
+  length: 10

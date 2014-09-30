@@ -1,0 +1,15 @@
+TrackRequest(xmlns="http://fedex.com/ws/track/v3")
+  == partial "header"
+  Version
+    ServiceId trck
+    Major 3
+    Intermediate 0
+    Minor 0
+  PackageIdentifier
+    Value tracking_number
+    Type= PackageIdentifierTypes[options['package_identifier_type'] || 'tracking_number'])
+  - if options.key?('ship_date_range_begin')
+    ShipDateRangeBegin= options['ship_date_range_begin'])
+  - if options.key?('ship_date_range_end')
+    ShipDateRangeEnd= options['ship_date_range_end'])
+  IncludeDetailedScans 1

@@ -24,6 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport"
   spec.add_dependency "dotenv"
   spec.add_dependency "faraday_middleware"
+  spec.add_dependency "multi_xml"
   spec.add_dependency "nokogiri"
   spec.add_dependency "slim"
   spec.add_dependency "tilt"

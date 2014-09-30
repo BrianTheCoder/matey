@@ -1,6 +1,8 @@
+require "matey/responses/shipment_response"
+
 module Matey
   module Fedex
-    class ShipmentResponse < Matey::Responses::ShipmentResponse
+    class ShipmentResponse < Matey::ShipmentResponse
     end
   end
 end

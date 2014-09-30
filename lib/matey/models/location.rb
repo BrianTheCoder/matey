@@ -1,6 +1,6 @@
 module Matey
   class Location
-    include Virtus
+    include Virtus.model
     include ActiveModel::Validations
 
     attribute :name, String

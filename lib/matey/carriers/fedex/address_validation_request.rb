@@ -1,6 +1,8 @@
+require "matey/requests/address_validation_request"
+
 module Matey
   module Fedex
-    class AddressValidationRequest < Matey::Requests::AddressValidationRequest
+    class AddressValidationRequest < Matey::AddressValidationRequest
       DEFAULTS = {
         street_accuracy: :tight,
         directional_accuracy: :tight,

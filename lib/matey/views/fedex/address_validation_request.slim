@@ -8,10 +8,14 @@ AddressValidationRequest(xmlns="http://fedex.com/ws/addressvalidation/v2")
   RequestTimestamp= Time.now.iso8601
   Options
     CheckResidentialStatus= options[:check_residential_status] ? 1 : 0
-    MaximumNumberOfMatches= options[:maximum_number_of_matches]
-    StreetAccuracy= options[:street_accuracy].to_s.upcase
-    DirectionalAccuracy= options[:directional_accuracy].to_s.upcase
-    CompanyNameAccuracy= options[:company_name_accuracy].to_s.upcase
+    - if options.key?(:maximum_number_of_matches)
+      MaximumNumberOfMatches= options[:maximum_number_of_matches]
+    - if options.key?(:street_accuracy)
+      StreetAccuracy= options[:street_accuracy].to_s.upcase
+    - if options.key?(:directional_accuracy)
+      DirectionalAccuracy= options[:directional_accuracy].to_s.upcase
+    - if options.key?(:company_name_accuracy)
+      CompanyNameAccuracy= options[:company_name_accuracy].to_s.upcase
     ConvertToUpperCase= options[:convert_to_upper_case] ? 1 : 0
     RecognizeAlternateCityNames= options[:recognize_alternate_city_names] ? 1 : 0
     ReturnParsedElements= options[:return_parsed_elements] ? 1 : 0

@@ -1,6 +1,8 @@
+require "matey/requests/tracking_info_request"
+
 module Matey
   module Fedex
-    class TrackingInfoRequest < Matey::Requests::TrackingInfoRequest
+    class TrackingInfoRequest < Matey::TrackingInfoRequest
     end
   end
 end

@@ -1,0 +1,53 @@
+ProcessShipmentRequest(xmlns='http://fedex.com/ws/ship/v12')
+  == partial "header"
+  Version
+    ServiceId ship
+    Major 12
+    Intermediate 0
+    Minor 0
+  RequestedShipment
+    ShipTimestamp= Time.now.utc.iso8601(2)
+    DropoffType=  options[:dropoff_type] || 'REGULAR_PICKUP')
+    ServiceType= options[:service_type] || 'FEDEX_GROUND')
+    PackagingType= options[:packaging_type] || 'YOUR_PACKAGING')
+    Shipper= origin
+    Recipient= destination
+    ShippingChargesPayment
+      PaymentType= options[:payment_type] || 'SENDER'
+      Payor
+        ResponsibleParty
+          AccountNumber= options[:account]
+          Contact
+            PersonName= origin.name || 'Shipper'
+            CompanyName= origin.company_name || 'Company'
+            - if origin.phone.present?
+              PhoneNumber= origin.phone
+    - if options[:service_type] == 'SMART_POST' && options[:smart_post].present?
+      SmartPostDetail
+        Indicia= options[:smart_post][:indicia] || 'PARCEL_SELECT'
+        - if options[:smart_post][:ancillary_endorsement]
+          AncillaryEndorsement= options[:smart_post][:ancillary_endorsement]
+        HubId= options[:smart_post][:hub_id]
+    LabelSpecification
+      LabelFormatType= options[:label_format_type] || 'COMMON2D'
+      ImageType= options[:label_image_type] || 'PDF'
+      LabelStockType= options[:label_stock_type] || 'PAPER_LETTER'
+      CustomerSpecifiedDetail
+        MaskedData SHIPPER_ACCOUNT_NUMBER
+    RateRequestTypes ACCOUNT
+    PackageCount 1
+    PackageDetail INDIVIDUAL_PACKAGES
+    RequestedPackageLineItems
+      SequenceNumber 1
+      - if package.value.present?
+        InsuredValue
+          Currency= package.currenct
+          Amount= package.value
+      Weight
+        Units= package.imperial ? 'LB' : 'KG'
+        Value= package.weight
+      Dimensions
+        Length= package.length
+        Width= package.width
+        Height= package.height
+        Units= package.imperial? ? 'IN' : 'CM'

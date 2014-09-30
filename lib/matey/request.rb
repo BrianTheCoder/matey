@@ -2,10 +2,12 @@ require "tilt"
 
 module Matey
   class Request
-    attr_accessor :client
+    include Virtus.model
+    include ActiveModel::Validations
+
+    attribute :client, Matey::Client
 
     def render(options = {})
-      options.reverse_merge!(DEFAULTS)
       template = Tilt.new("#{self.class.root}/#{self.class.name.gsub('Matey','').underscore}.slim")
       template.render(self, options: options)
     end

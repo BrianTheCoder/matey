@@ -15,4 +15,10 @@ module Matey
   # models
   autoload :Location, "matey/models/location"
   autoload :Package, "matey/models/package"
+  autoload :Item, "matey/models/item"
+
+  # clients
+  module Fedex
+    autoload :Client, "matey/carriers/fedex/client"
+  end
 end

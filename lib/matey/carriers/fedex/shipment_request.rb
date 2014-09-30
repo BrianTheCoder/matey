@@ -1,6 +1,8 @@
+require "matey/requests/shipment_request"
+
 module Matey
   module Fedex
-    class ShipmentRequest < Matey::Requests::ShipmentRequest
+    class ShipmentRequest < Matey::ShipmentRequest
     end
   end
 end
